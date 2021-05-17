@@ -1,0 +1,8 @@
+<div>
+  <h2>Add Question</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <input formControlName="title" type="text" placeholder="Enter your title">
+    <input formControlName="body" type="text" placeholder="Enter your body">
+    <input type="submit" value="Add">
+  </form>
+</div>

@@ -10,12 +10,15 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './component/home/home.component';
+import { AddquestionComponent } from './component/addquestion/addquestion.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     HomeComponent,
+    AddquestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { HomeComponent } from './component/home/home.component';
     AngularFireAuthModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

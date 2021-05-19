@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './component/home/home.component';
 import { AddquestionComponent } from './component/addquestion/addquestion.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     SignupComponent,
     HomeComponent,
     AddquestionComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

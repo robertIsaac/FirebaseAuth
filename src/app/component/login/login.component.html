@@ -1,0 +1,27 @@
+<div class="col-md-6 offset-md-3 mt-4">
+  <h3>Login</h3>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="registerUsername">Username</label>
+      <input [ngClass]="loginForm.controls['email'].invalid && loginForm.controls['email'].touched ? 'is-invalid' : '' "
+             class="form-control"
+             formControlName="email"
+             id="registerUsername"
+             placeholder="Enter username"
+             required>
+
+
+    </div>
+    <div class="form-group">
+      <label for="registerPassword">Password</label>
+      <input [ngClass]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched ? 'is-invalid' : '' "
+             class="form-control"
+             formControlName="password"
+             id="registerPassword"
+             placeholder="Password"
+             type="password">
+    </div>
+    <button [disabled]="!loginForm.valid" class="btn btn-primary" type="submit">login</button>
+
+  </form>
+</div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,10 @@ import firebase from 'firebase/app';
 export class AuthService {
 
   constructor(private afAuth: AngularFireAuth) {
+    this.user = afAuth.user;
   }
+
+  user: Observable<firebase.User | null>;
 
   signup(email: string, password: string): ReturnType<firebase.auth.Auth['createUserWithEmailAndPassword']> {
     return this.afAuth.createUserWithEmailAndPassword(email, password);

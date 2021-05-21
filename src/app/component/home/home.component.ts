@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GoodsService } from '../../services/goods.service';
-import { Goods } from '../../interface/goods';
+import { Question } from '../../interface/question';
+import firebase from 'firebase/app';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +10,24 @@ import { Goods } from '../../interface/goods';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  goods: Goods[] = [];
+  question: Question[] = [];
 
-  constructor(private gs: GoodsService) {
+  constructor(private gs: GoodsService, private as: AuthService) {
+    this.as.user.subscribe((user) => {
+      console.log(user);
+    });
   }
 
   ngOnInit(): void {
-    this.gs.getAllGoods().subscribe(data => {
-     this.goods = data.map((element: any) => {
+    this.gs.getAllQuestion().subscribe(data => {
+      this.question = data.map((element: any) => {
         return {
           id: element.payload.doc.id,
-          ...element.payload.doc.data()
+          ...element.payload.doc.data(),
         };
       });
     });
   }
+
 
 }

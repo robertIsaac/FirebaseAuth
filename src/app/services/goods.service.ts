@@ -12,8 +12,8 @@ export class GoodsService {
   constructor(private fs: AngularFirestore, private storage: AngularFireStorage) {
   }
 
-  getAllGoods(): Observable<unknown[]> {
-    return this.fs.collection(`goods`).snapshotChanges();
+  getAllQuestion(): Observable<unknown[]> {
+    return this.fs.collection(`questions`).snapshotChanges();
   }
 
   addNewQuestion(form: Question): void {

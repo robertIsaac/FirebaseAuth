@@ -1,6 +1,7 @@
 <p>home works!</p>
-<div *ngFor="let good of goods">
-  <img [src]="good.photoUrl">
-  <h3>{{good.name}}</h3>
-  <p>{{good.price}}</p>
+<div *ngFor="let good of question">
+  <h3>{{good.uid}}</h3>
+  <p>{{good.title}}</p>
+  <p>{{good.body}}</p>
+  <p>{{good.vote}}</p>
 </div>

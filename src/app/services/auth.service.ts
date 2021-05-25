@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,20 @@ export class AuthService {
     });
   }
 
+  SendVerificationMail(): Subscription {
+    return this.user.subscribe((user) => {
+      user?.sendEmailVerification().then(() => {
+        console.log('thank you mail will be sent ');
+      });
+    });
+  }
 
-  signup(email: string, password: string): ReturnType<firebase.auth.Auth['createUserWithEmailAndPassword']> {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
+  signup(email: string, password: string): Promise<void> {
+    return this.afAuth.createUserWithEmailAndPassword(email, password).then((result) => {
+      this.SendVerificationMail();
+    }).catch((error: any) => {
+      window.alert(error.message);
+    });
   }
 
   logIn(email: string, password: string): Promise<firebase.auth.UserCredential> {

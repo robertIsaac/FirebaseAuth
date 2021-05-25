@@ -13,6 +13,7 @@ import { HomeComponent } from './component/home/home.component';
 import { AddquestionComponent } from './component/addquestion/addquestion.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { LoginComponent } from './component/login/login.component';
+import { UserComponent } from './component/user/user.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './component/login/login.component';
     HomeComponent,
     AddquestionComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

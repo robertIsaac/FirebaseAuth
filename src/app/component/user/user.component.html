@@ -1,2 +1,6 @@
 <p>user works!</p>
 <h1 *ngIf="errorMessage">{{errorMessage}}</h1>
+<form [formGroup]="uploadPhoto" (ngSubmit)="upLoad()">
+  <input type="file" class="btn btn-primary" formControlName="photo" #image>
+  <button>submit</button>
+</form>

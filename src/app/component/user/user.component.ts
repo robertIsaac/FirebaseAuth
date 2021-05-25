@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { GoodsService } from '../../services/goods.service';
 
 @Component({
   selector: 'app-user',
@@ -9,12 +11,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
+  @ViewChild('image') image: ElementRef;
   emailVerificationCode: string;
   apiKey: string;
   showForm = false;
   errorMessage: string;
+  uploadPhoto = new FormGroup({
+    photo: new FormControl(),
+  });
 
-  constructor(private activatedRoute: ActivatedRoute, private as: AuthService, public router: Router) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private as: AuthService,
+    public router: Router,
+    private goodsService: GoodsService) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.emailVerificationCode = params.oobCode;
     });
@@ -41,10 +51,16 @@ export class UserComponent implements OnInit {
             console.log(error);
           },
         );
-      }else {
+      } else {
         this.showForm = true;
       }
     });
   }
 
+  upLoad(): void {
+    const image = (this.image.nativeElement as HTMLInputElement).files?.[0];
+    if (image) {
+      this.goodsService.addPhoto(image);
+    }
+  }
 }

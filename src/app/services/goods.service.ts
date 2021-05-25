@@ -19,4 +19,9 @@ export class GoodsService {
   addNewQuestion(form: Question): void {
     this.fs.collection(`questions`).add(form);
   }
+
+  addPhoto(image: File ): void {
+  const ref =  this.storage.ref('avatars/' + image.name);
+  ref.put(image).then();
+  }
 }
